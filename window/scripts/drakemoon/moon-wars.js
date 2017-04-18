@@ -1,10 +1,10 @@
-var loopTimeout;
 var openAt = Date.now();
 var results = {};
 
 function loop() {
   var claimButton = $('.free-bar .icon-free_coins');
   var numDiamonds = parseInt($('.user-stats .diamonds span').text(), 10);
+  var loginButton = $('.login-button');
 
   if (Date.now() - openAt > 600000) {
     /* prevent logout */
@@ -12,10 +12,13 @@ function loop() {
   } else if (claimButton.length > 0) {
     /* claim diamonds */
     claimButton.click();
-    loopTimeout = setTimeout(loop, (1 + Math.random()) * 1000);
+    setTimeout(loop, (1 + Math.random()) * 1000);
   } else if (numDiamonds < 100) {
     /* not enough diamonds */
-    loopTimeout = setTimeout(loop, (1 + Math.random()) * 60000);
+    setTimeout(loop, (1 + Math.random()) * 60000);
+  } else if (loginButton.length > 0) {
+    /* login */
+    loginButton[0].click();
   } else {
     /* open chest */
     var chestIndex = 0;
@@ -27,7 +30,7 @@ function loop() {
       chestIndex = 3;
     }
     $('[src="/build/dist/images/drakeclash/drakeclash_chest_1.png"]').eq(chestIndex).click();
-    loopTimeout = setTimeout(function() {
+    setTimeout(function() {
       /* sell prize */
       var result = $('#chest-open-result .name-wrapper span').hide().show(0).eq(0).text();
 
@@ -38,12 +41,13 @@ function loop() {
 
       if (result.indexOf('Not your day') === -1 && result.indexOf('Chest') === -1) {
         chrome.runtime.sendMessage({
-          earning: result
+          title: 'Congratulations!',
+          message: 'You just got a ' + result
         });
       }
 
       $('.icon-arrow-circle-o-up').click();
-      loopTimeout = setTimeout(loop, (1 + Math.random()) * 1000);
+      setTimeout(loop, (1 + Math.random()) * 1000);
     }, (9 + Math.random()) * 1000);
   }
 }
