@@ -19,12 +19,12 @@ function loop() {
       if (result) {
         chrome.runtime.sendMessage({
           title: 'Congratulations!',
-          message: 'You just got a ' + result
+          message: 'You just got ' + result + ' on Dealskins'
         });
       }
 
       setTimeout(loop, ((result ? 13 : 1) + Math.random()) * 300000);
-    }, (10 + Math.random()) * 2000);
+    }, (8 + Math.random()) * 2000);
   } else {
     /* case not loaded */
     setTimeout(loop, (5 + Math.random()) * 1000);

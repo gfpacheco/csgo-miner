@@ -5,9 +5,9 @@ function loop() {
   var numDiamonds = parseInt($('.user-stats .diamonds span').text(), 10);
   var loginButton = $('.login-button');
 
-  if (Date.now() - openAt > 600000) {
+  if (Date.now() - openAt > 3600000) {
     /* prevent logout */
-    window.location = 'https://www.drakemoon.com/moon-wars-top-100';
+    window.location.reload();
   } else if (claimButton.length > 0) {
     /* claim diamonds */
     claimButton.click();
@@ -28,7 +28,7 @@ function loop() {
     } else if (numDiamonds > 5000) {
       chestIndex = 3;
     }
-    $('[src="/build/dist/images/drakeclash/drakeclash_chest_1.png"]').eq(chestIndex).click();
+    $('.chest').eq(chestIndex).click();
     setTimeout(function() {
       /* sell prize */
       var result = $('#chest-open-result .name-wrapper span').hide().show(0).eq(0).text();
@@ -36,7 +36,7 @@ function loop() {
       if (result.indexOf('Not your day') === -1 && result.indexOf('Chest') === -1) {
         chrome.runtime.sendMessage({
           title: 'Congratulations!',
-          message: 'You just got a ' + result
+          message: 'You just got a ' + result + ' on Drakemoon'
         });
       }
 

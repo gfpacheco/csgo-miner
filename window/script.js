@@ -33,11 +33,6 @@ $(function() {
       name: 'moon-wars',
       matches: ['https://www.drakemoon.com/moon-wars'],
       js: { files: ['/window/vendor/jquery.js', '/window/scripts/drakemoon/moon-wars.js'] }
-    },
-    {
-      name: 'moon-wars-top-100',
-      matches: ['https://www.drakemoon.com/moon-wars-top-100'],
-      js: { files: ['/window/scripts/drakemoon/goto-moon-wars.js'] }
     }
   ]);
 
