@@ -3,7 +3,6 @@ var openAt = Date.now();
 function loop() {
   if (Date.now() - openAt > 60000) {
     /* button not showing after 1 min */
-    console.log('button not showing after 1 min');
     window.location = 'http://dealskins.com/case/cash';
     window.location.reload();
   } else if ($('[ng-switch-when="auth"]').length > 0) {
@@ -13,7 +12,6 @@ function loop() {
     setTimeout(loop, (2 + Math.random()) * 1000);
   } else if ($('#btnOpen').length > 0) {
     /* open case */
-    console.log('open case');
     $('#btnOpen')[0].click();
     setTimeout(function() {
       var result = $('.win .title').text();
@@ -29,7 +27,6 @@ function loop() {
     }, (10 + Math.random()) * 2000);
   } else {
     /* case not loaded */
-    console.log('case not loaded');
     setTimeout(loop, (5 + Math.random()) * 1000);
   }
 }

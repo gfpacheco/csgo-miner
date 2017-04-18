@@ -1,5 +1,4 @@
 var openAt = Date.now();
-var results = {};
 
 function loop() {
   var claimButton = $('.free-bar .icon-free_coins');
@@ -33,11 +32,6 @@ function loop() {
     setTimeout(function() {
       /* sell prize */
       var result = $('#chest-open-result .name-wrapper span').hide().show(0).eq(0).text();
-
-      results[result] = (results[result] || 0) + 1;
-      console.log(Object.keys(results).map(function(key) {
-        return results[key] + 'x ' + key;
-      }).join(', '));
 
       if (result.indexOf('Not your day') === -1 && result.indexOf('Chest') === -1) {
         chrome.runtime.sendMessage({
