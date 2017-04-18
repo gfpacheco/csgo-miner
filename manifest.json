@@ -1,0 +1,16 @@
+{
+  "name": "Skin Miner",
+  "description": "Mine CS:GO skins (and free money) through websites",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "background": {
+      "scripts": [
+        "background.js"
+      ]
+    }
+  },
+  "permissions": [
+    "webview"
+  ]
+}
