@@ -11,6 +11,17 @@ $(function() {
     return webview;
   }
 
+  chrome.runtime.onMessage.addListener(function(request) {
+    if (request.earning) {
+      chrome.notifications.create('earning', {
+        type: 'basic',
+        iconUrl: '/icons/icon_128.png',
+        title: 'Congratulations!',
+        message: 'You just got a ' + request.earning
+      }, function(notificationId) {});
+    }
+  });
+
   createWebview('https://www.drakemoon.com/moon-wars', [
     {
       name: 'moon-wars',
