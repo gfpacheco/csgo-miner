@@ -20,6 +20,11 @@ $(function() {
 
   createWebview('https://www.drakemoon.com/moon-wars', [
     {
+      name: 'steam-login',
+      matches: ['https://steamcommunity.com/openid/login*'],
+      js: { files: ['/window/scripts/steam/login.js'] }
+    },
+    {
       name: 'index',
       matches: ['https://www.drakemoon.com/'],
       js: { files: ['/window/scripts/drakemoon/goto-moon-wars.js'] }
@@ -37,6 +42,11 @@ $(function() {
   ]);
 
   createWebview('http://dealskins.com/case/cash', [
+    {
+      name: 'steam-login',
+      matches: ['https://steamcommunity.com/openid/login*'],
+      js: { files: ['/window/scripts/steam/login.js'] }
+    },
     {
       name: 'cash',
       matches: ['http://dealskins.com/*'],
