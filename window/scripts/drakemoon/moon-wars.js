@@ -20,15 +20,7 @@ function loop() {
     loginButton[0].click();
   } else {
     /* open chest */
-    var chestIndex = 0;
-    if (numDiamonds > 1000) {
-      chestIndex = 1;
-    } else if (numDiamonds > 3000) {
-      chestIndex = 2;
-    } else if (numDiamonds > 5000) {
-      chestIndex = 3;
-    }
-    $('.chest').eq(chestIndex).click();
+    $('.chest').eq(0).click();
     setTimeout(function() {
       /* sell prize */
       var result = $('#chest-open-result .name-wrapper span').hide().show(0).eq(0).text();
