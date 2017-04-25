@@ -35,17 +35,4 @@ $(function() {
       js: { files: ['/window/vendor/jquery.js', '/window/scripts/drakemoon/moon-wars.js'] }
     }
   ]);
-
-  createWebview('http://dealskins.com/case/cash', [
-    {
-      name: 'steam-login',
-      matches: ['https://steamcommunity.com/openid/login*'],
-      js: { files: ['/window/scripts/steam/login.js'] }
-    },
-    {
-      name: 'cash',
-      matches: ['http://dealskins.com/*'],
-      js: { files: ['/window/vendor/jquery.js', '/window/scripts/dealskins/cash.js'] }
-    }
-  ]);
 });
