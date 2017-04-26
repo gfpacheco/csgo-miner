@@ -35,4 +35,22 @@ $(function() {
       js: { files: ['/window/vendor/jquery.js', '/window/scripts/drakemoon/moon-wars.js'] }
     }
   ]);
+
+  createWebview('http://csgoroll.com/roulette', [
+    {
+      name: 'steam-login',
+      matches: ['https://steamcommunity.com/openid/login*'],
+      js: { files: ['/window/scripts/steam/login.js'] }
+    },
+    {
+      name: 'index',
+      matches: ['http://csgoroll.com/'],
+      js: { files: ['/window/scripts/csgoroll/goto-roulette.js'] }
+    },
+    {
+      name: 'roulette',
+      matches: ['http://csgoroll.com/roulette'],
+      js: { files: ['/window/vendor/jquery.js', '/window/scripts/csgoroll/roulette.js'] }
+    }
+  ]);
 });
