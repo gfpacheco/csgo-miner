@@ -1,5 +1,6 @@
 var openAt = Date.now();
 var timesWithNo0 = 0;
+var greed = 2;
 var bet = 0;
 var analytics = {};
 
@@ -43,7 +44,7 @@ function loop() {
     }
 
     if (timesWithNo0 >= 10) {
-      bet = Math.min(Math.floor(timesWithNo0 / 10) / 100, balance);
+      bet = Math.min(greed * Math.floor(timesWithNo0 / 10) / 100, balance);
       balance -= bet;
       $('[formcontrolname="bet"]').val(bet)[0].dispatchEvent(new Event('change'));
       $('.btn-3d-success').click();
