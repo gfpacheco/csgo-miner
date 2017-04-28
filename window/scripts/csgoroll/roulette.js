@@ -1,6 +1,6 @@
 var openAt = Date.now();
 var timesWithNo0 = 0;
-var greed = 2;
+var greed = 1;
 var bet = 0;
 var analytics = {};
 
@@ -20,7 +20,7 @@ function loop() {
     /* lost everything */
     chrome.runtime.sendMessage({
       title: 'Well!',
-      message: 'I just lost everything, lucky you I wasn\'t playing for real'
+      message: 'I just lost everything, too bad for you!'
     });
   } else if ($('csgr-countdown .progress').width() < 1) {
     /* is spinning */
@@ -43,7 +43,7 @@ function loop() {
       timesWithNo0 += 1;
     }
 
-    if (timesWithNo0 >= 10) {
+    if (timesWithNo0 >= 10 && timesWithNo0 < 35) {
       bet = Math.min(greed * Math.floor(timesWithNo0 / 10) / 100, balance);
       balance -= bet;
       $('[formcontrolname="bet"]').val(bet)[0].dispatchEvent(new Event('change'));
