@@ -1,6 +1,13 @@
 var openAt = Date.now();
 var timesWithNo0 = 0;
 var bet = 0;
+var analytics = {};
+
+chrome.storage.local.get(function(data) {
+  if (data && data.analytics) {
+    analytics = data.analytics;
+  }
+});
 
 function loop() {
   var balance = parseFloat($('.btn-balance').text().trim());
@@ -21,6 +28,8 @@ function loop() {
     /* check if should bet */
     if ($('csgr-round-list .round.green').length > 0) {
       if (bet !== 0) {
+        analytics[timesWithNo0] = (analytics[timesWithNo0] || 0) + 1;
+        chrome.storage.local.set({analytics: analytics});
         chrome.runtime.sendMessage({
           title: 'Congratulations!',
           message: 'You just won $' + (14 * bet) + ' and the current balance is $' + balance + ' on CSGORoll'
