@@ -36,7 +36,7 @@ $(function() {
     }
   ]);
 
-  createWebview('http://csgoroll.com/roulette', [
+  createWebview('https://csgoroll.com/roulette', [
     {
       name: 'steam-login',
       matches: ['https://steamcommunity.com/openid/login*'],
@@ -44,12 +44,12 @@ $(function() {
     },
     {
       name: 'index',
-      matches: ['http://csgoroll.com/'],
+      matches: ['https://csgoroll.com/'],
       js: { files: ['/window/scripts/csgoroll/goto-roulette.js'] }
     },
     {
       name: 'roulette',
-      matches: ['http://csgoroll.com/roulette'],
+      matches: ['https://csgoroll.com/roulette'],
       js: { files: ['/window/vendor/jquery.js', '/window/scripts/csgoroll/roulette.js'] }
     }
   ]);
