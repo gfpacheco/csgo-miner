@@ -47,6 +47,8 @@ function loop() {
         $('[formcontrolname="bet"]').val(bet)[0].dispatchEvent(new Event('change'));
         $('.btn-3d-success').click();
       }
+    } else {
+      bet = 0;
     }
 
     console.log('times: ' + timesWithNo0 + ', balance: ' + balance + ', bet: ' + bet);
