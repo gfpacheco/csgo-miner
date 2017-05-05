@@ -3,6 +3,7 @@ var timesWithNo0 = 0;
 var greed = 1;
 var bet = 0;
 var analytics = {};
+var shouldTrack = false;
 
 chrome.storage.local.get(function(data) {
   if (data && data.analytics) {
@@ -22,9 +23,13 @@ function loop() {
   } else {
     /* check if should bet */
     if ($('csgr-round-list .round.green').length > 0) {
+      shouldTrack = true;
+
       if (timesWithNo0 !== 0) {
-        analytics[timesWithNo0] = (analytics[timesWithNo0] || 0) + 1;
-        chrome.storage.local.set({analytics: analytics});
+        if (shouldTrack) {
+          analytics[timesWithNo0] = (analytics[timesWithNo0] || 0) + 1;
+          chrome.storage.local.set({analytics: analytics});
+        }
 
         if (bet !== 0) {
           chrome.runtime.sendMessage({
